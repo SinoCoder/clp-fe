@@ -1,22 +1,21 @@
 import Vue from "vue";
-import VueI18n from "vue-i18n";
+import { Button } from "element-ui";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import _ from "lodash/core";
 import "./registerServiceWorker";
-import globalComponents from "./register/globalComponents";
+import "element-ui/lib/theme-chalk/index.css";
+import i18n from "./locale";
 
 Vue.config.productionTip = false;
-
-Vue.use(globalComponents);
-
-const i18n = new VueI18n({
-  locale: "zhCN"
-});
+Vue.use(Button);
 
 new Vue({
+  i18n,
   router,
   store,
+  mounted() {
+    window.vue = this;
+  },
   render: h => h(App)
 }).$mount("#app");
