@@ -6,6 +6,7 @@ export default {
     contest: "比赛"
   },
   news: {
-    nonews: "暂时没有新闻"
+    title: "公告",
+    nonews: "暂时没有公告"
   }
 };

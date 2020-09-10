@@ -11,7 +11,8 @@ import {
   DropdownItem,
   Card,
   Link,
-  PageHeader
+  PageHeader,
+  Avatar
 } from "element-ui";
 import clpContainer from "./components/Container";
 import App from "./App.vue";
@@ -41,6 +42,7 @@ Vue.use(DropdownItem);
 Vue.use(Card);
 Vue.use(Link);
 Vue.use(PageHeader);
+Vue.use(Avatar);
 Vue.component("clp-container", clpContainer);
 
 Vue.use(VueHightlightJS);

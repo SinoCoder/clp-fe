@@ -1,20 +1,15 @@
 <template>
-  <div class="news-container">
-    <NewsList />
+  <div class="main">
+    <clp-container class="login-container"> </clp-container>
   </div>
 </template>
 
 <script>
-import NewsList from "./NewsList";
-export default {
-  components: {
-    NewsList
-  }
-};
+export default {};
 </script>
 
 <style>
-.news-container {
+.login-container {
   display: flex;
   flex-direction: column;
   height: 100%;

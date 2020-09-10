@@ -1,20 +1,15 @@
 <template>
-  <div class="news-container">
-    <NewsList />
+  <div class="main">
+    <clp-container class="register-container">things</clp-container>
   </div>
 </template>
 
 <script>
-import NewsList from "./NewsList";
-export default {
-  components: {
-    NewsList
-  }
-};
+export default {};
 </script>
 
-<style>
-.news-container {
+<style scoped>
+.register-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -24,6 +19,5 @@ export default {
   margin-bottom: 40px;
   box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.075) !important;
   background-color: rgb(255, 255, 255);
-  transition: 0.3s;
 }
 </style>

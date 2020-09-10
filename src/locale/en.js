@@ -6,6 +6,7 @@ export default {
     contest: "Contest"
   },
   news: {
+    title: "News",
     nonews: "No News"
   }
 };

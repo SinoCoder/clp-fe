@@ -15,12 +15,19 @@
         <el-menu-item index="3">{{ $t("navbar.contest") }}</el-menu-item>
       </el-menu>
     </div>
-    <div class="language-container">
+    <div class="right-container">
       <el-dropdown class="language" @command="localeChange">
         <span class="dropdown-link">
           {{ $t("navbar.languageSwitch") }}
           <i class="el-icon-arrow-down el-icon-down"></i>
         </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="zh">中文 ZH</el-dropdown-item>
+          <el-dropdown-item command="en">英文 EN</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <el-dropdown>
+        <el-avatar class="avatar" size="medium" :src="circleUrl"></el-avatar>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="zh">中文 ZH</el-dropdown-item>
           <el-dropdown-item command="en">英文 EN</el-dropdown-item>
@@ -82,7 +89,7 @@ export default {
 }
 
 .language {
-  width: 150px;
+  width: 100px;
   text-align: center;
 }
 
@@ -99,5 +106,16 @@ export default {
 }
 .el-icon-arrow-down {
   font-size: 12px;
+}
+.right-container {
+  display: inline-flex;
+  align-items: center;
+}
+.avatar {
+  margin: 12px 20px 12px 15px;
+  transition: 400ms;
+}
+.avatar:hover {
+  box-shadow: 0 0.2rem 0.27rem rgba(31, 21, 21, 0.1) !important;
 }
 </style>
