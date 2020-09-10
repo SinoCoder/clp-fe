@@ -6,6 +6,7 @@ import Head from "../layouts/Head";
 import Foot from "../layouts/Foot";
 
 Vue.use(VueRouter);
+NProgress.configure({ showSpinner: false });
 
 const routes = [
   {
@@ -14,6 +15,24 @@ const routes = [
     components: {
       head: Head,
       default: () => import("../layouts/Home"),
+      foot: Foot
+    }
+  },
+  {
+    path: "/problem",
+    name: "Problem",
+    components: {
+      head: Head,
+      default: () => import("../layouts/Problem"),
+      foot: Foot
+    }
+  },
+  {
+    path: "/contest",
+    name: "Contest",
+    components: {
+      head: Head,
+      default: () => import("../layouts/Contest"),
       foot: Foot
     }
   }
@@ -29,7 +48,6 @@ router.beforeEach((to, from, next) => {
   if (to.path != from.path) {
     NProgress.start();
   }
-
   next();
 });
 

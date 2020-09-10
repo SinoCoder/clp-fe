@@ -1,5 +1,11 @@
 export default {
   navbar: {
-    title: "CLP"
+    languageSwitch: "语言",
+    index: "Index",
+    problem: "Problem",
+    contest: "Contest"
+  },
+  news: {
+    nonews: "No News"
   }
 };

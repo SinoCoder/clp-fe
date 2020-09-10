@@ -35,12 +35,6 @@ export const setup = lang => {
   }
   window.localStorage.setItem(LOCALE_KEY, lang);
 
-  Object.keys(locales).forEach(lang => {
-    document.body.classList.remove(`lang-${lang}`);
-  });
-  document.body.classList.add(`lang-${lang}`);
-  document.body.setAttribute("lang", lang);
-
   Vue.config.lang = lang;
   i18n.locale = lang;
 };

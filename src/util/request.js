@@ -4,6 +4,7 @@ import { Notification } from "element-ui";
 Vue.prototype.$notify = Notification;
 
 function request(options) {
+  axios.defaults.baseURL = "http://localhost:10086";
   return axios(options)
     .then(res => {
       return res;
