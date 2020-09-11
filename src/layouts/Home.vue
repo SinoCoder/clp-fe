@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import News from "../components/News/News";
+import News from "../components/News";
 export default {
   components: {
     News

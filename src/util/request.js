@@ -10,10 +10,19 @@ function request(options) {
       return res;
     })
     .catch(error => {
-      const body = error.response.data;
+      let body;
+      body = {
+        status: 410,
+        message: "请求失败"
+      };
+      try {
+        body = error.response.data;
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
       Notification.error({
         title: body.status + " ERROR",
-        message: body.message
+        message: body.message,
+        offset: 60
       });
       return Promise.reject(error);
     });

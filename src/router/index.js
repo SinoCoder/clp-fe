@@ -35,6 +35,24 @@ const routes = [
       default: () => import("../layouts/Contest"),
       foot: Foot
     }
+  },
+  {
+    path: "/login",
+    name: "Login",
+    components: {
+      head: Head,
+      default: () => import("../layouts/Login"),
+      foot: Foot
+    }
+  },
+  {
+    path: "/register",
+    name: "Register",
+    components: {
+      head: Head,
+      default: () => import("../layouts/Register"),
+      foot: Foot
+    }
   }
 ];
 

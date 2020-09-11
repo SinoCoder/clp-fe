@@ -12,7 +12,10 @@ import {
   Card,
   Link,
   PageHeader,
-  Avatar
+  Avatar,
+  Form,
+  FormItem,
+  Input
 } from "element-ui";
 import clpContainer from "./components/Container";
 import App from "./App.vue";
@@ -20,10 +23,6 @@ import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 import VueHightlightJS from "vue-highlight.js";
-// import javascript from "highlight.js/lib/languages/javascript";
-// import cpp from "highlight.js/lib/languages/cpp";
-// import c from "highlight.js/lib/languages/c";
-// import java from "highlight.js/lib/languages/java";
 import "highlight.js/styles/github.css";
 import "./assets/scss/clp.scss";
 
@@ -43,6 +42,10 @@ Vue.use(Card);
 Vue.use(Link);
 Vue.use(PageHeader);
 Vue.use(Avatar);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
+
 Vue.component("clp-container", clpContainer);
 
 Vue.use(VueHightlightJS);
@@ -53,6 +56,7 @@ new Vue({
   store,
   mounted() {
     window.vue = this;
+    this.$i18n.locale = this.$store.state.app.language;
   },
   render: h => h(App)
 }).$mount("#app");
