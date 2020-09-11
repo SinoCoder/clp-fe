@@ -1,11 +1,18 @@
 <template>
-  <div>
-    Main
+  <div class="main">
+    <clp-container>
+      <News />
+    </clp-container>
   </div>
 </template>
 
 <script>
-export default {};
+import News from "../components/News";
+export default {
+  components: {
+    News
+  }
+};
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>

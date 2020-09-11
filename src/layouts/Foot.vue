@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Foot
-  </div>
+  <div></div>
 </template>
 
 <script>
