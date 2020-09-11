@@ -53,6 +53,15 @@ const routes = [
       default: () => import("../layouts/Register"),
       foot: Foot
     }
+  },
+  {
+    path: "/about",
+    name: "About",
+    components: {
+      head: Head,
+      default: () => import("../layouts/About"),
+      foot: Foot
+    }
   }
 ];
 

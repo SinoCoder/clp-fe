@@ -29,6 +29,7 @@ import "./assets/scss/clp.scss";
 import i18n from "./locale";
 
 Vue.config.productionTip = false;
+
 Vue.use(Button);
 Vue.use(Menu);
 Vue.use(MenuItem);

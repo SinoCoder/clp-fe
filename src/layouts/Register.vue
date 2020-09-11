@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import request from "../util/request";
 export default {
   data() {
     return {
