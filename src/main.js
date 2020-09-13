@@ -15,7 +15,12 @@ import {
   Avatar,
   Form,
   FormItem,
-  Input
+  Input,
+  Pagination,
+  Table,
+  TableColumn,
+  Switch,
+  Tag
 } from "element-ui";
 import clpContainer from "./components/Container";
 import App from "./App.vue";
@@ -46,6 +51,11 @@ Vue.use(Avatar);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(Pagination);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Switch);
+Vue.use(Tag);
 
 Vue.component("clp-container", clpContainer);
 
