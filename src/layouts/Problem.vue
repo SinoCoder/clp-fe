@@ -1,28 +1,13 @@
 <template>
   <div class="main">
     <clp-container class="problem-container">
-      <ProblemSearch />
-    </clp-container>
-    <clp-container class="problem-container">
-      <QuestionList />
+      Problem
     </clp-container>
   </div>
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import ProblemSearch from "../components/ProblemSearch";
-// eslint-disable-next-line no-unused-vars
-import QuestionList from "../components/QuestionList";
-
-export default {
-  components: {
-    // eslint-disable-next-line vue/no-unused-components
-    QuestionList,
-    // eslint-disable-next-line vue/no-unused-components
-    ProblemSearch
-  }
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
