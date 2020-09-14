@@ -1,11 +1,19 @@
 <template>
   <div class="main">
-    <clp-container class="contest-container">contest</clp-container>
+    <clp-container class="contest-container">
+      <ContestList />
+    </clp-container>
   </div>
 </template>
 
 <script>
-export default {};
+// eslint-disable-next-line no-unused-vars
+import ContestList from "../components/Contest/ContestList";
+export default {
+  components: {
+    ContestList
+  }
+};
 </script>
 
 <style lang="scss" scoped>

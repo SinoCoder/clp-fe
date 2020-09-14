@@ -10,15 +10,17 @@
           <el-link href="" type="primary">{{ scope.row.title }}</el-link>
         </template>
       </el-table-column>
+
       <!-- tags -->
       <el-table-column width="170px" label="标签" prop="tags">
         <template slot-scope="scope">
-          <!-- 这个地方想写个读取数组 但是不知道scope.row.tags后面该怎么弄 -->
+          <!-- 这个地方想写个读取数组 但是还没想出来怎么弄 -->
           <el-tag @click="handle1" size="small" closable="true">{{
             scope.row.tags
           }}</el-tag>
         </template>
       </el-table-column>
+
       <!-- type -->
       <el-table-column label="题目类型" prop="type">
         <template slot-scope="scope">
@@ -51,7 +53,7 @@
       :page-size="size"
       layout="total, sizes, prev, pager, next,
       jumper"
-      :total="numberOfElements"
+      :total="100"
     >
     </el-pagination>
   </div>
@@ -61,11 +63,36 @@
 // eslint-disable-next-line no-unused-vars
 import marked from "marked";
 // eslint-disable-next-line no-unused-vars
-import request from "../util/request";
+import request from "../../util/request";
 export default {
   name: "clp-problem",
   data() {
-    return {};
+    return {
+      //简单看下效果
+      content: [
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: "好难",
+          type: "分支结构",
+          difficulty: "123"
+        },
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: "好难",
+          type: "顺序结构",
+          difficulty: "123"
+        },
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: "好难",
+          type: "数组",
+          difficulty: "123"
+        }
+      ]
+    };
   },
   methods: {
     //使用公共的request工具获取题目
@@ -106,4 +133,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scope>
+.el-table .cell {
+  text-align: center;
+}
+.el-table_1_column_2 .cell {
+  text-align: left !important;
+}
+.el-pagination {
+  float: right;
+}
+</style>

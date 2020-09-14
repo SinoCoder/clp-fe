@@ -11,9 +11,8 @@
 
 <script>
 // eslint-disable-next-line no-unused-vars
-import ProblemSearch from "../components/ProblemSearch";
-// eslint-disable-next-line no-unused-vars
-import QuestionList from "../components/QuestionList";
+import ProblemSearch from "../components/Problem/ProblemSearch";
+import QuestionList from "../components/Problem/QuestionList";
 
 export default {
   components: {
