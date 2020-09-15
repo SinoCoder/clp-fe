@@ -20,7 +20,11 @@ import {
   Table,
   TableColumn,
   Switch,
-  Tag
+  Tag,
+  Tabs,
+  TabPane,
+  Breadcrumb,
+  BreadcrumbItem
 } from "element-ui";
 import clpContainer from "./components/Container";
 import App from "./App.vue";
@@ -56,6 +60,10 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Switch);
 Vue.use(Tag);
+Vue.use(Tabs);
+Vue.use(TabPane);
+Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
 
 Vue.component("clp-container", clpContainer);
 

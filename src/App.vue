@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view name="head"></router-view>
+    <router-view name="contesthead"></router-view>
     <div>
       <router-view />
     </div>

@@ -68,30 +68,30 @@ export default {
   name: "clp-problem",
   data() {
     return {
-      //简单看下效果
-      // content: [
-      //   {
-      //     id: 1,
-      //     title: "titeltiteltiteltiteltitel",
-      //     tags: "好难",
-      //     type: "分支结构",
-      //     difficulty: "123"
-      //   },
-      //   {
-      //     id: 1,
-      //     title: "titeltiteltiteltiteltitel",
-      //     tags: "好难",
-      //     type: "顺序结构",
-      //     difficulty: "123"
-      //   },
-      //   {
-      //     id: 1,
-      //     title: "titeltiteltiteltiteltitel",
-      //     tags: "好难",
-      //     type: "数组",
-      //     difficulty: "123"
-      //   }
-      // ]
+      // 简单看下效果
+      content: [
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: "好难",
+          type: "分支结构",
+          difficulty: "123"
+        },
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: "好难",
+          type: "顺序结构",
+          difficulty: "123"
+        },
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: "好难",
+          type: "数组",
+          difficulty: "123"
+        }
+      ]
     };
   },
   methods: {
