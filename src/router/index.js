@@ -62,6 +62,25 @@ const routes = [
       default: () => import("../layouts/About"),
       foot: Foot
     }
+  },
+  {
+    path: "/problemdetail",
+    name: "ProblemDetail",
+    components: {
+      head: Head,
+      default: () => import("../layouts/ProblemDetail"),
+      foot: Foot
+    }
+  },
+  {
+    path: "/contestdetail",
+    name: "ContestDetail",
+    components: {
+      head: Head,
+      default: () => import("../layouts/ContestDetail"),
+      foot: Foot
+      // eslint-disable-next-line no-undef
+    }
   }
 ];
 
