@@ -1,6 +1,6 @@
 <template>
-  <!-- 比赛说明 -->
   <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <!-- 比赛说明 -->
     <el-tab-pane label="比赛说明" name="first">
       <template>
         <!-- 左边说明 -->
@@ -24,13 +24,12 @@
         <!-- 卡片2 -->
         <el-card class="box-card2">
           <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
-              >操作按钮</el-button
-            >
+            <span>比赛已经结束</span>
           </div>
-          <div v-for="o in 5" :key="o" class="text item">
-            {{ "列表内容 " + o }}
+          <div>
+            <p>
+              温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示
+            </p>
           </div>
         </el-card>
       </template>
@@ -60,27 +59,33 @@
           </el-table>
         </el-card>
 
+        <!-- 卡片上 -->
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
+            <span>比赛详情</span>
+            <!-- <el-button style="float: right; padding: 3px 0" type="text"
               >操作按钮</el-button
-            >
+            > -->
           </div>
-          <div v-for="o in 5" :key="o" class="text item">
+          <!-- <div v-for="o in 5" :key="o" class="text item">
             {{ "列表内容 " + o }}
+          </div> -->
+          <div slot-scope="scope">
+            <li v-for="(item, index) in tableData1" :key="item">
+              {{ scope.row.cardwords[index] }}
+            </li>
           </div>
         </el-card>
-        <!--  -->
+
+        <!-- 卡片下 -->
         <el-card class="box-card2">
           <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
-              >操作按钮</el-button
-            >
+            <span>比赛已经结束</span>
           </div>
-          <div v-for="o in 5" :key="o" class="text item">
-            {{ "列表内容 " + o }}
+          <div>
+            <p>
+              温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示
+            </p>
           </div>
         </el-card>
       </template>
@@ -89,18 +94,59 @@
     <!-- 排行榜 -->
     <el-tab-pane label="排行榜" name="third">
       <el-card class="box-card qwe">
-        <el-table :data="tableData1" stripe style="width: 100%">
-          <el-table-column prop="id" label="题号" width="60"> </el-table-column>
-          <el-table-column prop="score" label="满分" width="80">
+        <el-table :data="tableData3" stripe style="width: 100%">
+          <!-- 名次 -->
+          <el-table-column prop="rank" label="名次" width="60">
           </el-table-column>
-          <el-table-column prop="title" label="题目名称" width="440">
+          <!-- 参赛者 -->
+          <el-table-column prop="member" label="满分" width="185">
             <template slot-scope="scope">
-              <el-link href="" type="primary">{{ scope.row.title }}</el-link>
+              <el-link href="" type="primary">{{ scope.row.member }}</el-link>
             </template>
           </el-table-column>
-          <el-table-column prop="status" label="状态">
+          <!-- 总分 -->
+          <el-table-column prop="score" label="总分" width="160">
             <template slot-scope="scope">
-              <el-tag type="danger" size="mini">{{ scope.row.status }}</el-tag>
+              <span>{{ scope.row.score }}</span>
+              <br />
+              <span>{{ scope.row.timesum }}</span>
+            </template>
+          </el-table-column>
+          <!-- 题号 -->
+          <el-table-column
+            width="77.9"
+            v-for="(item, index) in tableData31"
+            :key="item"
+            :prop="item"
+            :label="item"
+          >
+            <template slot-scope="scope">
+              <span
+                style="font-weight: 600; color: rgb(82,196,26);"
+                v-if="scope.row.proscores[index] == 100"
+              >
+                {{ scope.row.proscores[index] }}
+                <br />
+                {{ scope.row.timelimt[index] }}
+              </span>
+
+              <span
+                style="font-weight: 600; color: rgb(250,219,20);"
+                v-else-if="scope.row.proscores[index] >= 70"
+              >
+                {{ scope.row.proscores[index] }}
+              </span>
+
+              <span
+                style="font-weight: 600; color: rgb(243,156,17);"
+                v-else-if="scope.row.proscores[index] >= 40"
+              >
+                {{ scope.row.proscores[index] }}
+              </span>
+
+              <span style="font-weight: 600; color: rgb(231,76,60);" v-else>
+                {{ scope.row.proscores[index] }}
+              </span>
             </template>
           </el-table-column>
         </el-table>
@@ -111,125 +157,131 @@
 
 <script>
 export default {
+  name: "clp-contabs",
   data() {
     return {
       activeName: "first",
+      // 题目列表
       tableData1: [
         {
           id: 1,
           score: 100,
           title: "zrmpaul Loves Array",
           tags: "好难",
-          status: "未提交"
+          status: "未提交",
+          cardwords: [123, 1321, 5456, 65454, 65465]
         },
         {
           id: 2,
           score: 100,
           title: "zrmpaul Loves Array",
           tags: "好难",
-          status: "未提交"
+          status: "未提交",
+          cardwords: [123, 1321, 5456, 65454, 65465]
         },
         {
           id: 3,
           score: 100,
           title: "zrmpaul Loves Array",
           tags: "好难",
-          status: "未提交"
+          status: "未提交",
+          cardwords: [123, 1321, 5456, 65454, 65465]
         },
         {
-          id: 1,
+          id: 4,
           score: 100,
           title: "zrmpaul Loves Array",
           tags: "好难",
-          status: "未提交"
+          status: "未提交",
+          cardwords: [123, 1321, 5456, 65454, 65465]
         },
         {
-          id: 2,
+          id: 5,
           score: 100,
           title: "zrmpaul Loves Array",
           tags: "好难",
-          status: "未提交"
+          status: "未提交",
+          cardwords: [123, 1321, 5456, 65454, 65465]
         },
         {
-          id: 3,
+          id: 6,
           score: 100,
           title: "zrmpaul Loves Array",
           tags: "好难",
-          status: "未提交"
+          status: "未提交",
+          cardwords: [123, 1321, 5456, 65454, 65465]
         }
       ],
+      // 排行榜前段
       tableData3: [
         {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
+          rank: 1,
+          member: "_ingennavn",
+          score: 600,
+          timesum: "3.37s",
+          prolist: [132, 465, "asdsd"],
+          proscores: [100, 100, 100, 100, 100, 100, 100, 100, 100],
+          timelimt: [
+            "443ms",
+            "888ms",
+            "1ms",
+            "43ms",
+            "103ms",
+            "1000ms",
+            "1300ms",
+            "543ms",
+            "3ms"
+          ]
         },
         {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
+          rank: 2,
+          member: "zhouyuyang",
+          score: 600,
+          timesum: "3.37s",
+          prolist: [132, 465, "asdsd"],
+          proscores: [1, 30, 50, 70, 80, 2, 90, 100, 0],
+          timelimt: ["", "", "", "", "", "", "", "443ms", ""]
         },
         {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
+          rank: 3,
+          member: "Dawn",
+          score: 1000,
+          timesum: "3.37s",
+          prolist: [132, 465, "asdsd"],
+          proscores: [1, 2, 100, 4, 50, 6, 7, 1, 0],
+          timelimt: ["", "", "443ms", "", "", "", "", "", ""]
         },
         {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
+          rank: 4,
+          member: "不会真的有人起这么长的名字吧",
+          score: 600,
+          timesum: "3.37s",
+          prolist: [132, 465, "asdsd"],
+          proscores: [100, 30, 3, 4, 5, 70, 7, 70, 20],
+          timelimt: ["443ms", "", "", "", "", "", "", "", ""]
         },
         {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
+          rank: 5,
+          member: "	水上由岐",
+          score: 100,
+          timesum: "3.37s",
+          prolist: [132, 465, "asdsd"],
+          proscores: [100, 2, 3, 80, 5, 6, 7, 45, 98],
+          timelimt: ["443ms", "", "", "", "", "", "", "", ""]
         },
         {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
-        },
-        {
-          data: "asd",
-          name: "sadsad",
-          address: "sdd"
+          rank: 6,
+          member: "	水上由岐",
+          score: 100,
+          timesum: "3.37s",
+          prolist: [132, 465, "asdsd"],
+          proscores: [100, 2, 3, 4, 40, 6, 7, 8, 9],
+          timelimt: ["443ms", "", "", "", "", "", "", "", ""]
         }
-      ]
+      ],
+      // 排行榜后段
+      tableData31: ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+      // 卡片上
     };
   },
   methods: {

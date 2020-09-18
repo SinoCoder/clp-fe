@@ -11,7 +11,9 @@ vue/valid-template-root */
       <el-table-column prop="title" label="比赛名称" width="300px">
         <!-- 这儿要添加个标签状态 -->
         <template slot-scope="scope">
-          <el-link href="" type="primary">{{ scope.row.title }}</el-link>
+          <el-link href="/contestdetail" type="primary">{{
+            scope.row.title
+          }}</el-link>
         </template>
       </el-table-column>
       <el-table-column prop="type" label="类型">

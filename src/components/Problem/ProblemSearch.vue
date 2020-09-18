@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "pro-searchr",
+  name: "clp-searchr",
   data() {
     return {
       num: "5555",
