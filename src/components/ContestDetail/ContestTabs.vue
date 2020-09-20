@@ -12,23 +12,49 @@
         <!-- 卡片1 -->
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
-              >操作按钮</el-button
-            >
+            <span>比赛详情</span>
           </div>
-          <div v-for="o in 5" :key="o" class="text item">
-            {{ "列表内容 " + o }}
+          <span>比赛编号</span>
+          <span v-text="id" class="word-right">{{ id }}</span>
+          <br />
+          <span>举办团队</span>
+          <el-link v-text="team" class="word-right" type="primary">{{
+            team
+          }}</el-link>
+          <br />
+          <span>比赛类型</span>
+          <template>
+            <div class="word-right">
+              <!-- 这个地方想写个读取数组 但是还没想出来怎么弄 -->
+              <el-tag v-text="type" effect="dark" @click="handle1" size="small">
+                {{ type }}
+              </el-tag>
+            </div>
+          </template>
+          <br />
+          <span>开始时间</span>
+          <div class="word-right">
+            <span v-text="start">{{ start }}</span>
+          </div>
+          <br />
+          <span>结束时间</span>
+          <div v-text="start" class="word-right">
+            <span>{{ end }}</span>
+          </div>
+          <br />
+          <span>比赛时长</span>
+          <div class="word-right">
+            <span v-text="time">{{ time }}</span>
           </div>
         </el-card>
         <!-- 卡片2 -->
         <el-card class="box-card2">
           <div slot="header" class="clearfix">
-            <span>比赛已经结束</span>
+            <span v-text="status">{{ status }}</span>
           </div>
           <div>
-            <p>
-              温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示
+            <p v-text="tips">
+              {{ tips }}
             </p>
           </div>
         </el-card>
@@ -59,32 +85,52 @@
           </el-table>
         </el-card>
 
-        <!-- 卡片上 -->
+        <!-- 卡片1 -->
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>比赛详情</span>
-            <!-- <el-button style="float: right; padding: 3px 0" type="text"
-              >操作按钮</el-button
-            > -->
           </div>
-          <!-- <div v-for="o in 5" :key="o" class="text item">
-            {{ "列表内容 " + o }}
-          </div> -->
-          <div slot-scope="scope">
-            <li v-for="(item, index) in tableData1" :key="item">
-              {{ scope.row.cardwords[index] }}
-            </li>
+          <span>比赛编号</span>
+          <span v-text="id" class="word-right">{{ id }}</span>
+          <br />
+          <span>举办团队</span>
+          <el-link v-text="team" class="word-right" type="primary">{{
+            team
+          }}</el-link>
+          <br />
+          <span>比赛类型</span>
+          <template>
+            <div class="word-right">
+              <!-- 这个地方想写个读取数组 但是还没想出来怎么弄 -->
+              <el-tag v-text="type" effect="dark" @click="handle1" size="small">
+                {{ type }}
+              </el-tag>
+            </div>
+          </template>
+          <br />
+          <span>开始时间</span>
+          <div class="word-right">
+            <span v-text="start">{{ start }}</span>
+          </div>
+          <br />
+          <span>结束时间</span>
+          <div v-text="start" class="word-right">
+            <span>{{ end }}</span>
+          </div>
+          <br />
+          <span>比赛时长</span>
+          <div class="word-right">
+            <span v-text="time">{{ time }}</span>
           </div>
         </el-card>
-
-        <!-- 卡片下 -->
+        <!-- 卡片2 -->
         <el-card class="box-card2">
           <div slot="header" class="clearfix">
-            <span>比赛已经结束</span>
+            <span v-text="status">{{ status }}</span>
           </div>
           <div>
-            <p>
-              温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示
+            <p v-text="tips">
+              {{ tips }}
             </p>
           </div>
         </el-card>
@@ -280,8 +326,17 @@ export default {
         }
       ],
       // 排行榜后段
-      tableData31: ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+      tableData31: ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
       // 卡片上
+      id: 66666,
+      team: "齐鲁工业大学",
+      type: "ACM",
+      start: "2020-08-11T08:28:16.000+00:00",
+      end: "2020-07-20T02:30:00.000+00:00",
+      time: "4.00h",
+      status: "比赛已经结束",
+      tips:
+        "温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示"
     };
   },
   methods: {
@@ -353,5 +408,11 @@ export default {
   width: 100% !important;
   position: relative;
   left: -155px !important;
+}
+.word-right {
+  display: inline-block;
+  text-align: right;
+  width: 288px;
+  line-height: 30px;
 }
 </style>
