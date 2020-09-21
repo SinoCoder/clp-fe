@@ -16,19 +16,20 @@ vue/valid-template-root */
           }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column prop="type" label="类型">
+
+      <el-table-column width="200" prop="type" label="类型">
         <template slot-scope="scope">
           <el-button
-            v-if="scope.row.type == 'IOI'"
+            v-if="scope.row.type[0] != ''"
             type="warning"
             size="mini"
-            >{{ scope.row.type }}</el-button
+            >{{ scope.row.type[0] }}</el-button
           >
           <el-button
-            v-else-if="scope.row.type == 'ACM'"
+            v-if="scope.row.type[1] != ''"
             type="success"
             size="mini"
-            >{{ scope.row.type }}</el-button
+            >{{ scope.row.type[1] }}</el-button
           >
         </template>
       </el-table-column>
@@ -36,7 +37,7 @@ vue/valid-template-root */
       </el-table-column>
       <el-table-column prop="end" label="结束时间" width="154px">
       </el-table-column>
-      <el-table-column prop="description" label="描述" width="400px">
+      <el-table-column prop="description" label="描述" width="320px">
       </el-table-column>
     </el-table>
 
@@ -69,7 +70,7 @@ export default {
       tableData: [
         {
           title: "集训队互测 2018 同步赛 （Day 2）",
-          type: "ACM",
+          type: ["ACM", "IOI"],
           start: "2020-08-11T08:28:16.000+00:00",
           end: "2020-07-20T02:30:00.000+00:00",
           description:
@@ -77,7 +78,7 @@ export default {
         },
         {
           title: "集训队互测 2018 同步赛 （Day 2）",
-          type: "ACM",
+          type: ["ACM", "IOI"],
           start: "2020-08-11T08:28:16.000+00:00",
           end: "2020-07-20T02:30:00.000+00:00",
           description:
@@ -85,7 +86,7 @@ export default {
         },
         {
           title: "集训队互测 2018 同步赛 （Day 2）",
-          type: "ACM",
+          type: ["ACM", "IOI"],
           start: "2020-08-11T08:28:16.000+00:00",
           end: "2020-07-20T02:30:00.000+00:00",
           description:

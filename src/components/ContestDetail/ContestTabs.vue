@@ -415,4 +415,9 @@ export default {
   width: 288px;
   line-height: 30px;
 }
+.el-tabs__header .is-top {
+  background: white;
+  box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.075);
+
+}
 </style>

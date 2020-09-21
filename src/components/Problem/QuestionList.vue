@@ -5,19 +5,34 @@
       <!-- id -->
       <el-table-column width="80px" label="编号" prop="id"></el-table-column>
       <!-- title -->
-      <el-table-column width="630px" label="题目名称" prop="title">
+      <el-table-column width="600px" label="题目名称" prop="title">
         <template slot-scope="scope">
-          <el-link href="" type="primary">{{ scope.row.title }}</el-link>
+          <el-link href="/problemdetail" type="primary">{{
+            scope.row.title
+          }}</el-link>
         </template>
       </el-table-column>
 
       <!-- tags -->
-      <el-table-column width="170px" label="标签" prop="tags">
+      <el-table-column width="200px" label="标签" prop="tags">
         <template slot-scope="scope">
           <!-- 这个地方想写个读取数组 但是还没想出来怎么弄 -->
-          <el-tag @click="handle1" size="small" closable="true">{{
-            scope.row.tags
-          }}</el-tag>
+          <el-tag
+            v-if="scope.row.tags[0] != ''"
+            class="tags"
+            @click="handle1"
+            size="small"
+            closable="true"
+            >{{ scope.row.tags[0] }}</el-tag
+          >
+          <el-tag
+            v-if="scope.row.tags[1] != ''"
+            class="tags"
+            @click="handle1"
+            size="small"
+            closable="true"
+            >{{ scope.row.tags[1] }}</el-tag
+          >
         </template>
       </el-table-column>
 
@@ -26,13 +41,31 @@
         <template slot-scope="scope">
           <el-button
             v-if="scope.row.type == '分支结构' || scope.row.type == '顺序结构'"
-            type="warning"
+            type="primary"
             size="mini"
             >{{ scope.row.type }}</el-button
           >
           <el-button
             v-else-if="scope.row.type == '数组'"
             type="success"
+            size="mini"
+            >{{ scope.row.type }}</el-button
+          >
+          <el-button
+            v-else-if="scope.row.type == '模拟与高精度'"
+            type="warning"
+            size="mini"
+            >{{ scope.row.type }}</el-button
+          >
+          <el-button
+            v-else-if="scope.row.type == '暴力枚举'"
+            type="info"
+            size="mini"
+            >{{ scope.row.type }}</el-button
+          >
+          <el-button
+            v-else-if="scope.row.type == '图的基本应用'"
+            type="danger"
             size="mini"
             >{{ scope.row.type }}</el-button
           >
@@ -73,22 +106,36 @@ export default {
         {
           id: 1,
           title: "titeltiteltiteltiteltitel",
-          tags: "好难",
+          tags: ["NOIp普及组", ""],
           type: "分支结构",
           difficulty: "123"
         },
         {
           id: 1,
           title: "titeltiteltiteltiteltitel",
-          tags: "好难",
-          type: "顺序结构",
+          tags: ["NOIp普及组", "NOIp普及组"],
+          type: "数组",
           difficulty: "123"
         },
         {
           id: 1,
           title: "titeltiteltiteltiteltitel",
-          tags: "好难",
-          type: "数组",
+          tags: ["NOIp普及组", "山东"],
+          type: "模拟与高精度",
+          difficulty: "123"
+        },
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: ["NOIp普及组", "山东"],
+          type: "暴力枚举",
+          difficulty: "123"
+        },
+        {
+          id: 1,
+          title: "titeltiteltiteltiteltitel",
+          tags: ["NOIp普及组", "山东"],
+          type: "图的基本应用",
           difficulty: "123"
         }
       ]
@@ -134,7 +181,16 @@ export default {
 </script>
 
 <style scope>
-.el-table .cell {
+.el-table_1_column_1 .cell {
+  text-align: center;
+}
+.el-table_1_column_3 .cell {
+  text-align: center;
+}
+.el-table_1_column_4 .cell {
+  text-align: center;
+}
+.el-table_1_column_5 .cell {
   text-align: center;
 }
 .el-table_1_column_2 .cell {
@@ -142,5 +198,11 @@ export default {
 }
 .el-pagination {
   float: right;
+}
+.tags {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 </style>
