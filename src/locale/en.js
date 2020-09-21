@@ -8,7 +8,10 @@ export default {
     register: "Register",
     logout: "Logout",
     user: "User",
-    back: "Back"
+    back: "Back",
+    theme: "Theme",
+    light: "Light",
+    dark: "Dark"
   },
   news: {
     title: "News",
@@ -27,5 +30,33 @@ export default {
     password: "Password",
     repassword: "Confirm password",
     email: "E-mail"
+  },
+  problem: {
+    submit: "Submit",
+    language: "Language",
+    fontsize: "Font Size",
+    find: "Search Problem",
+    search: "Search",
+    searchInfo: "Please Enter Problem Title",
+    number: "No.",
+    title: "Title",
+    tag: "Tag",
+    difficulty: "Difficulty",
+    total: "{total} result in total."
+  },
+  contest: {
+    public: "Public",
+    certainSchool: "Certain School Only",
+    certainTeam: "Certain Team Only",
+    certainUser: "Certain User Only",
+    private: "Private",
+    name: "Contest Name",
+    type: "Type",
+    start: "Start",
+    end: "End",
+    status: "Status",
+    over: "Already Over",
+    wait: "Waiting To Start",
+    on: "Contesting"
   }
 };

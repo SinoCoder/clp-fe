@@ -31,7 +31,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
-import VueHightlightJS from "vue-highlight.js";
+import VueHightlightJS from "vue-highlightjs";
 import "highlight.js/styles/github.css";
 import "./assets/scss/clp.scss";
 
@@ -67,7 +67,7 @@ Vue.use(BreadcrumbItem);
 
 Vue.component("clp-container", clpContainer);
 
-Vue.use(VueHightlightJS);
+Vue.use(VueHightlightJS, ["c", "cpp", "java"]);
 
 new Vue({
   i18n,

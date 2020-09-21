@@ -1,22 +1,22 @@
 <template>
   <div class="main">
-    <clp-container class="problem-container">
-      <ContestTabs />
+    <clp-container class="contest-container">
+      <ContestList />
     </clp-container>
   </div>
 </template>
 
 <script>
-import ContestTabs from "../components/Contest/ContestTabs";
+import ContestList from "../components/Contest/ContestList";
 export default {
   components: {
-    ContestTabs
+    ContestList
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.problem-container {
+.contest-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -24,6 +24,7 @@ export default {
   border-radius: 5px;
   margin-top: 20px;
   margin-bottom: 40px;
+  box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.075) !important;
   background-color: rgb(255, 255, 255);
 }
 </style>

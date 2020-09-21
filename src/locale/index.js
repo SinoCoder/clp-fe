@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueI18n from "vue-i18n";
 import elementEnLocale from "element-ui/lib/locale/lang/en";
 import elementZhLocale from "element-ui/lib/locale/lang/zh-CN";
+import locale from "element-ui/lib/locale";
 import en from "./en";
 import zh from "./zh";
 
@@ -37,6 +38,7 @@ export const setup = lang => {
 
   Vue.config.lang = lang;
   i18n.locale = lang;
+  locale.i18n((key, value) => i18n.t(key, value));
 };
 
 setup();

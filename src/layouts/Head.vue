@@ -10,12 +10,32 @@
         mode="horizontal"
         @select="handleSelect"
       >
-        <el-menu-item index="1">{{ $t("navbar.index") }}</el-menu-item>
-        <el-menu-item index="2">{{ $t("navbar.problem") }}</el-menu-item>
-        <el-menu-item index="3">{{ $t("navbar.contest") }}</el-menu-item>
+        <el-menu-item index="1" path="/">{{ $t("navbar.index") }}</el-menu-item>
+        <el-menu-item index="2" path="/problem">{{
+          $t("navbar.problem")
+        }}</el-menu-item>
+        <el-menu-item index="3" path="/contest">{{
+          $t("navbar.contest")
+        }}</el-menu-item>
       </el-menu>
     </div>
     <div class="right-container">
+      <el-dropdown class="theme" @command="themeChange" v-show="false">
+        <span class="dropdown-link">
+          {{ $t("navbar.theme") }}
+          <i class="el-icon-arrow-down el-icon-down"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="light"
+            ><i class="el-icon-sunny"></i
+            >{{ $t("navbar.light") }}</el-dropdown-item
+          >
+          <el-dropdown-item command="dark"
+            ><i class="el-icon-moon"></i
+            >{{ $t("navbar.dark") }}</el-dropdown-item
+          >
+        </el-dropdown-menu>
+      </el-dropdown>
       <el-dropdown class="language" @command="localeChange">
         <span class="dropdown-link">
           {{ $t("navbar.languageSwitch") }}
@@ -47,7 +67,7 @@
 export default {
   data() {
     return {
-      activeIndex: "1",
+      activeIndex: "",
       user: Object,
       avatarUrl: ""
     };
@@ -58,24 +78,24 @@ export default {
       this.route(key);
     },
     route(key) {
-      let to = "/";
-      switch (Number.parseInt(key)) {
-        case 1:
-          to = "/";
-          break;
-        case 2:
-          to = "/problem";
-          break;
-        case 3:
-          to = "/contest";
+      let path;
+      if (key == 1) {
+        path = "/";
+      } else if (key == 2) {
+        path = "/problem";
+      } else if (key == 3) {
+        path = "/contest";
       }
-      if (this.$route.path != to) {
-        this.$router.push(to);
+      if (this.$route.path.search(path) == -1 || path == "/") {
+        this.$router.push(path);
       }
     },
     localeChange(key) {
       this.$store.dispatch("setLanguage", key);
       this.$i18n.locale = key;
+    },
+    themeChange(key) {
+      this.$store.dispatch("setTheme", key);
     },
     userChange(key) {
       if (key == "login") {
@@ -87,11 +107,12 @@ export default {
   },
   mounted: function() {
     this.avatarUrl = this.$store.getters.getAvatar;
-    if (this.$route.path.match("/problem")) {
+    if (this.$route.path.search("/problem") != -1) {
       this.activeIndex = "2";
-    }
-    if (this.$route.path.match("/contest")) {
+    } else if (this.$route.path.search("/contest") != -1) {
       this.activeIndex = "3";
+    } else if (this.$route.path.search("/") != -1) {
+      this.activeIndex = "1";
     }
   }
 };
@@ -114,6 +135,11 @@ export default {
 
 .language {
   width: 80px;
+  text-align: center;
+}
+
+.theme {
+  width: 70px;
   text-align: center;
 }
 

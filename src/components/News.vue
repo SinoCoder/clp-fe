@@ -40,6 +40,7 @@
 <script>
 import marked from "marked";
 import request from "../util/request";
+import DOMPurify from "dompurify";
 export default {
   name: "clp-news",
   data() {
@@ -72,7 +73,7 @@ export default {
   methods: {
     // 点开一个公告后使用markd解析公告内容，添加标题与标记展开
     expand: function(content) {
-      this.article = marked(content.content);
+      this.article = marked(DOMPurify.sanitize(content.content));
       this.title = content.title;
       this.isExpand = true;
     },
@@ -81,7 +82,7 @@ export default {
       request({
         method: "get",
         url: "/news",
-        data: {
+        params: {
           size: 20,
           page: this.page
         }
@@ -97,7 +98,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .news-container {
   display: flex;
   flex-direction: column;

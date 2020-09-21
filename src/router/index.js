@@ -25,7 +25,20 @@ const routes = [
       head: Head,
       default: () => import("../layouts/Problem"),
       foot: Foot
-    }
+    },
+    redirect: "/problem/home",
+    children: [
+      {
+        path: "home",
+        name: "ProblemHome",
+        component: () => import("../layouts/ProblemHome")
+      },
+      {
+        path: "detail/:id",
+        name: "ProblemDetail",
+        component: () => import("../layouts/ProblemDetail")
+      }
+    ]
   },
   {
     path: "/contest",
@@ -34,7 +47,20 @@ const routes = [
       head: Head,
       default: () => import("../layouts/Contest"),
       foot: Foot
-    }
+    },
+    redirect: "/contest/home",
+    children: [
+      {
+        path: "home",
+        name: "ContestHome",
+        component: () => import("../layouts/ContestHome")
+      },
+      {
+        path: "detail/:id",
+        name: "ContestDetail",
+        component: () => import("../layouts/ContestDetail")
+      }
+    ]
   },
   {
     path: "/login",
@@ -61,25 +87,6 @@ const routes = [
       head: Head,
       default: () => import("../layouts/About"),
       foot: Foot
-    }
-  },
-  {
-    path: "/problemdetail",
-    name: "ProblemDetail",
-    components: {
-      head: Head,
-      default: () => import("../layouts/ProblemDetail"),
-      foot: Foot
-    }
-  },
-  {
-    path: "/contestdetail",
-    name: "ContestDetail",
-    components: {
-      head: Head,
-      default: () => import("../layouts/ContestDetail"),
-      foot: Foot
-      // eslint-disable-next-line no-undef
     }
   }
 ];
