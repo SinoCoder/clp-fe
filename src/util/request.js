@@ -13,7 +13,7 @@ function request(options) {
       let body;
       body = {
         status: 410,
-        message: "请求失败"
+        message: "Request Failed"
       };
       try {
         body = error.response.data;

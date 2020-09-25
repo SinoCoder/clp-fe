@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-    <clp-container class="register-container">
+  <clp-container>
+    <clp-container class="container">
       <el-page-header
         class="page-header"
         @back="goBack"
@@ -25,6 +25,19 @@
         <el-form-item :label="$t('register.email')" prop="email">
           <el-input type="email" v-model="form.email"></el-input>
         </el-form-item>
+        <el-form-item
+          :label="$t('login.captcha')"
+          prop="captcha"
+          class="captcha-form"
+        >
+          <el-input v-model="form.captcha"></el-input>
+          <img
+            src="http://localhost:10086/captcha"
+            alt="CAPTCHA"
+            class="captcha"
+            onclick="this.src=this.src+'?'"
+          />
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm()">{{
             $t("register.submit")
@@ -33,16 +46,18 @@
         </el-form-item>
       </el-form>
     </clp-container>
-  </div>
+  </clp-container>
 </template>
 
 <script>
+import request from "../util/request";
 export default {
   data() {
     return {
       form: {
         username: "",
-        password: ""
+        password: "",
+        email: ""
       },
       rules: {
         username: [
@@ -80,6 +95,15 @@ export default {
             message: "长度在 5 到 40 字符之间",
             trigger: "blur"
           }
+        ],
+        captcha: [
+          { required: true, message: "请输入验证码", trigger: "blur" },
+          {
+            min: 4,
+            max: 4,
+            message: "验证码长度4位",
+            trigger: "blur"
+          }
         ]
       }
     };
@@ -91,9 +115,24 @@ export default {
     submitForm: function() {
       this.$refs["register-form"].validate(valid => {
         if (valid) {
-          console.log("Valid");
-        } else {
-          console.log("Not Valid");
+          request({
+            method: "post",
+            url: "/user",
+            params: {
+              username: this.form.username,
+              password: this.form.password,
+              email: this.form.email,
+              captcha: this.form.captcha
+            }
+          }).then(() => {
+            {
+              this.$notify.success({
+                title: this.$t("register.success"),
+                showClose: false
+              });
+              this.$router.push("/login");
+            }
+          });
         }
       });
     },
@@ -128,5 +167,12 @@ export default {
 
 .el-form-item {
   margin-bottom: 30px;
+}
+
+.captcha {
+  width: 90px;
+  height: 36px;
+  border-radius: 5px;
+  margin: 10px 0 0 0;
 }
 </style>

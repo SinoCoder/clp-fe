@@ -1,10 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" style="position:relative">
     <router-view name="head"></router-view>
     <router-view name="contesthead"></router-view>
-    <div>
-      <router-view />
-    </div>
+    <transition name="fade"><router-view /> </transition>
     <router-view name="foot"></router-view>
   </div>
 </template>

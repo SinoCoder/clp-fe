@@ -1,5 +1,5 @@
 <template>
-  <clp-container class="detail-container">
+  <clp-container class="container">
     <el-page-header
       class="page-header"
       @back="goBack"
@@ -95,21 +95,8 @@ export default {
 </script>
 
 <style scoped>
-.detail-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  padding: 20px 30px 20px 30px;
-  box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.075) !important;
-  background-color: rgb(255, 255, 255);
-}
-
-.content {
-  margin-top: 10px;
+.container {
+  padding: 20px;
 }
 
 .submit-button {

@@ -1,18 +1,19 @@
 <template>
-  <div class="news-container">
-    <!-- 公告栏标题 -->
-    <div v-if="!isExpand && !warning" class="news-header">
-      {{ $t("news.title") }}
-    </div>
-    <!-- 没有公告的警告 -->
-    <div v-if="warning" class="no-news">
-      {{ $t("news.nonews") }}
-    </div>
-    <!-- 如果没有警告且没有打开任何公告则显示 -->
-    <div v-if="!warning && !isExpand">
-      <!-- 循环遍历所有公告对象 -->
-      <div v-for="n in news" :key="n.id">
+  <transition name="fade">
+    <clp-container class="container" v-if="!isExpand" key="list">
+      <div class="news-list">
+        <!-- 公告栏标题 -->
+        <div v-if="!isExpand && !warning" class="news-header">
+          {{ $t("news.title") }}
+        </div>
+        <!-- 没有公告的警告 -->
+        <div v-if="warning" class="no-news">
+          {{ $t("news.nonews") }}
+        </div>
+        <!-- 循环遍历所有公告对象 -->
         <el-link
+          v-for="n in news"
+          :key="n.id"
           class="news-item"
           :underline="false"
           @click="expand(n)"
@@ -20,21 +21,20 @@
           >{{ n.title }}</el-link
         >
       </div>
-    </div>
+    </clp-container>
     <!-- 公告详情 -->
-    <div
-      class="news-detail"
-      v-if="article != null && article != '' && isExpand"
-    >
-      <el-page-header
-        class="page-header"
-        @back="goBack"
-        :title="$t('navbar.back')"
-        :content="title"
-      ></el-page-header>
-      <div v-html="article"></div>
-    </div>
-  </div>
+    <clp-container class="container" v-else key="info">
+      <div class="news-detail">
+        <el-page-header
+          class="page-header"
+          @back="goBack"
+          :title="$t('navbar.back')"
+          :content="title"
+        ></el-page-header>
+        <div v-html="article"></div>
+      </div>
+    </clp-container>
+  </transition>
 </template>
 
 <script>
@@ -99,20 +99,9 @@ export default {
 </script>
 
 <style scoped>
-.news-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  box-shadow: 0 0.25rem 0.4rem rgba(0, 0, 0, 0.075) !important;
-  background-color: rgb(255, 255, 255);
-  transition: 0.3s;
+.container {
   padding-bottom: 20px;
 }
-
 .news-item {
   line-height: 42px;
   font-size: 18px;
@@ -122,11 +111,19 @@ export default {
   justify-content: left !important;
 }
 
+.item-container {
+  width: 100%;
+}
+
 .news-item:hover {
   background-color: #f7fafe;
 }
 
 .button-back {
+  position: absolute;
+}
+
+.news-list {
   position: relative;
 }
 

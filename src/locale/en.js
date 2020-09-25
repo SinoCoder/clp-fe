@@ -1,4 +1,7 @@
 export default {
+  error: {
+    request: "Request Error"
+  },
   navbar: {
     languageSwitch: "语言",
     index: "Index",
@@ -21,7 +24,9 @@ export default {
     submit: "Login",
     reset: "Reset",
     username: "Username",
-    password: "Password"
+    password: "Password",
+    success: "Login Success",
+    captcha: "Captcha"
   },
   register: {
     submit: "Register",
@@ -29,7 +34,8 @@ export default {
     username: "Username",
     password: "Password",
     repassword: "Confirm password",
-    email: "E-mail"
+    email: "E-mail",
+    success: "Register Success"
   },
   problem: {
     submit: "Submit",
@@ -57,6 +63,9 @@ export default {
     status: "Status",
     over: "Already Over",
     wait: "Waiting To Start",
-    on: "Contesting"
+    on: "Contesting",
+    timer: "Current Time",
+    startTime: "Start Time",
+    endTime: "End Time"
   }
 };

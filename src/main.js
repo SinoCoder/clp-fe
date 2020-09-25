@@ -24,7 +24,8 @@ import {
   Tabs,
   TabPane,
   Breadcrumb,
-  BreadcrumbItem
+  BreadcrumbItem,
+  Progress
 } from "element-ui";
 import clpContainer from "./components/Container";
 import App from "./App.vue";
@@ -64,6 +65,7 @@ Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
+Vue.use(Progress);
 
 Vue.component("clp-container", clpContainer);
 

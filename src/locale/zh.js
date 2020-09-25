@@ -1,4 +1,7 @@
 export default {
+  error: {
+    request: "请求失败"
+  },
   navbar: {
     languageSwitch: "Language",
     index: "首页",
@@ -21,7 +24,9 @@ export default {
     submit: "登录",
     reset: "重置",
     username: "用户名",
-    password: "密码"
+    password: "密码",
+    success: "登录成功",
+    captcha: "验证码"
   },
   register: {
     submit: "注册",
@@ -29,7 +34,8 @@ export default {
     username: "用户名",
     password: "密码",
     repassword: "重复密码",
-    email: "邮箱"
+    email: "邮箱",
+    success: "注册成功"
   },
   problem: {
     submit: "提交",
@@ -57,6 +63,9 @@ export default {
     status: "比赛状态",
     over: "已结束",
     wait: "等待开始",
-    on: "正在进行"
+    on: "正在进行",
+    timer: "本机时间",
+    startTime: "开始时间",
+    endTime: "结束时间"
   }
 };
